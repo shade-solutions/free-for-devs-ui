@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { getToolsData, getToolsMetadata } from '@/lib/data';
-import Navigation from '@/components/Navigation';
+import SimpleHeader from '@/components/SimpleHeader';
 import ToolsPage from '@/components/ToolsPage';
 import LoadingSpinner from '@/components/LoadingSpinner';
 
@@ -66,7 +66,7 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <Navigation />
+      <SimpleHeader />
 
       <Suspense fallback={<LoadingSpinner />}>
         <ToolsPage

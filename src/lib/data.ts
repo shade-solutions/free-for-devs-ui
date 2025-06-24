@@ -1,10 +1,7 @@
-import fs from 'fs/promises';
-import path from 'path';
 import { Tool, Category } from '@/types';
 import { parseMarkdownToTools } from '@/utils/parser';
 
 const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/ripienaar/free-for-dev/refs/heads/master/README.md';
-const CACHE_FILE = path.join(process.cwd(), 'data', 'tools-cache.json');
 const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
 
 interface CachedData {
@@ -13,14 +10,8 @@ interface CachedData {
   timestamp: number;
 }
 
-async function ensureDataDirectory() {
-  const dataDir = path.join(process.cwd(), 'data');
-  try {
-    await fs.access(dataDir);
-  } catch {
-    await fs.mkdir(dataDir, { recursive: true });
-  }
-}
+// In-memory cache for Edge runtime compatibility
+let memoryCache: CachedData | null = null;
 
 async function fetchFromGitHub(): Promise<string> {
   try {
@@ -39,37 +30,29 @@ async function fetchFromGitHub(): Promise<string> {
   }
 }
 
-async function loadFromCache(): Promise<CachedData | null> {
-  try {
-    const cacheData = await fs.readFile(CACHE_FILE, 'utf-8');
-    const parsed: CachedData = JSON.parse(cacheData);
-    
-    // Check if cache is still valid
-    if (Date.now() - parsed.timestamp < CACHE_DURATION) {
-      return parsed;
-    }
-  } catch {
-    console.log('No valid cache found');
+function loadFromMemoryCache(): CachedData | null {
+  if (!memoryCache) return null;
+  
+  // Check if cache is still valid
+  if (Date.now() - memoryCache.timestamp < CACHE_DURATION) {
+    return memoryCache;
   }
   
+  // Cache expired
+  memoryCache = null;
   return null;
 }
 
-async function saveToCache(data: CachedData): Promise<void> {
-  try {
-    await ensureDataDirectory();
-    await fs.writeFile(CACHE_FILE, JSON.stringify(data, null, 2));
-  } catch (error) {
-    console.error('Error saving to cache:', error);
-  }
+function saveToMemoryCache(data: CachedData): void {
+  memoryCache = data;
 }
 
 export async function getToolsData(): Promise<{ tools: Tool[]; categories: Category[]; lastUpdated?: string }> {
   try {
-    // Try to load from cache first
-    const cachedData = await loadFromCache();
+    // Try to load from memory cache first
+    const cachedData = loadFromMemoryCache();
     if (cachedData) {
-      console.log('Using cached data');
+      console.log('Using cached data from memory');
       return { 
         tools: cachedData.tools, 
         categories: cachedData.categories,
@@ -85,8 +68,8 @@ export async function getToolsData(): Promise<{ tools: Tool[]; categories: Categ
     
     const timestamp = Date.now();
     
-    // Save to cache
-    await saveToCache({
+    // Save to memory cache
+    saveToMemoryCache({
       tools,
       categories,
       timestamp
@@ -100,16 +83,20 @@ export async function getToolsData(): Promise<{ tools: Tool[]; categories: Categ
   } catch (error) {
     console.error('Error in getToolsData:', error);
     
-    // Fallback to local file if available
+    // Fallback to public endpoint if GitHub fails
     try {
-      const localPath = path.join(process.cwd(), 'public', 'free-for-dev', 'README.md');
-      const localContent = await fs.readFile(localPath, 'utf-8');
-      const { tools, categories } = parseMarkdownToTools(localContent);
-      return { tools, categories };
+      const fallbackResponse = await fetch('https://free-on.pages.dev/free-for-dev/README.md');
+      if (fallbackResponse.ok) {
+        const fallbackContent = await fallbackResponse.text();
+        const { tools, categories } = parseMarkdownToTools(fallbackContent);
+        return { tools, categories };
+      }
     } catch (fallbackError) {
       console.error('Fallback also failed:', fallbackError);
-      return { tools: [], categories: [] };
     }
+    
+    // Return empty data if all fails
+    return { tools: [], categories: [] };
   }
 }
 

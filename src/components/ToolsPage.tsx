@@ -7,10 +7,10 @@ import { filterTools } from '@/utils/parser';
 import Header from '@/components/Header';
 import RealTimeBanner from '@/components/RealTimeBanner';
 import SearchBar from '@/components/SearchBar';
-import QuickFilters from '@/components/QuickFilters';
 import ToolGrid from '@/components/ToolGrid';
 import Stats from '@/components/Stats';
 import ApiShowcase from '@/components/ApiShowcase';
+import BottomBar from '@/components/BottomBar';
 
 interface ToolsPageProps {
   initialTools: Tool[];
@@ -45,23 +45,14 @@ export default function ToolsPage({ initialTools, initialCategories, lastUpdated
         totalResults={filteredTools.length}
       />
       
-      <QuickFilters
-        categories={initialCategories}
-        selectedCategory={selectedCategory}
-        selectedPricingModels={selectedPricingModels}
-        onCategoryChange={setSelectedCategory}
-        onPricingModelChange={setSelectedPricingModels}
-        totalResults={filteredTools.length}
-      />
-      
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24">
         <ToolGrid tools={filteredTools} />
       </main>
       
       <ApiShowcase />
       
       {/* Footer */}
-      <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-12 mt-16">
+      <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-12 mt-16 mb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Brand */}
@@ -160,6 +151,16 @@ export default function ToolsPage({ initialTools, initialCategories, lastUpdated
           </div>
         </div>
       </footer>
+
+      {/* Bottom Bar with Filters and Tool Count */}
+      <BottomBar 
+        categories={initialCategories}
+        selectedCategory={selectedCategory}
+        selectedPricingModels={selectedPricingModels}
+        onCategoryChange={setSelectedCategory}
+        onPricingModelChange={setSelectedPricingModels}
+        toolCount={filteredTools.length}
+      />
     </>
   );
 }
