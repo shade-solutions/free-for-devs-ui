@@ -48,7 +48,7 @@ async function loadFromCache(): Promise<CachedData | null> {
     if (Date.now() - parsed.timestamp < CACHE_DURATION) {
       return parsed;
     }
-  } catch (error) {
+  } catch {
     console.log('No valid cache found');
   }
   

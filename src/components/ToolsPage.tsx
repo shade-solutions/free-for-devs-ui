@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { Tool, Category } from '@/types';
 import { filterTools } from '@/utils/parser';
 import Header from '@/components/Header';
@@ -108,19 +109,19 @@ export default function ToolsPage({ initialTools, initialCategories, lastUpdated
               <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Resources</h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="/" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
+                  <Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
                     All Tools
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/categories" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
+                  <Link href="/categories" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
                     Categories
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/about" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
+                  <Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
                     About
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
@@ -13,11 +15,11 @@ export default function NotFound() {
           Page Not Found
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md">
-          The page you're looking for doesn't exist. Let's get you back to discovering amazing free tools!
+          The page you&apos;re looking for doesn&apos;t exist. Let&apos;s get you back to discovering amazing free tools!
         </p>
         
         <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
-          <a
+          <Link
             href="/"
             className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
           >
@@ -25,7 +27,7 @@ export default function NotFound() {
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
             </svg>
-          </a>
+          </Link>
           
           <a
             href="https://github.com/ripienaar/free-for-dev"

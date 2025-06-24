@@ -140,7 +140,7 @@ export function parseMarkdownToTools(markdownContent: string): { tools: Tool[], 
   return { tools, categories };
 }
 
-export function filterTools(tools: Tool[], filters: any): Tool[] {
+export function filterTools(tools: Tool[], filters: { search?: string; category?: string; pricingModel?: string[] }): Tool[] {
   return tools.filter(tool => {
     // Search filter
     if (filters.search) {

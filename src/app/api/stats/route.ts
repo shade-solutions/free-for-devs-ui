@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { getToolsMetadata } from '@/lib/data';
 
+// Note: Edge runtime disabled due to fs/path module usage in data fetching
+// export const runtime = 'edge';
+
 export async function GET() {
     try {
         const metadata = await getToolsMetadata();
