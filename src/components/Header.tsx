@@ -15,9 +15,15 @@ export default function Header() {
               Free for <span className="text-blue-200">Developers</span>
             </h1>
             <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-4xl mx-auto leading-relaxed">
-              Discover amazing free tools, services, and resources for developers. 
+              Real-time synchronized database of free tools and services for developers. 
               From APIs to hosting, find everything you need to build your next project.
             </p>
+            <div className="flex items-center justify-center space-x-2 mb-6">
+              <div className="flex items-center space-x-2 px-4 py-2 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-400/30">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-sm text-green-100 font-medium">Live sync with GitHub</span>
+              </div>
+            </div>
           </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-lg mb-8">
@@ -54,12 +60,10 @@ export default function Header() {
               Explore Tools →
             </button>
             <a
-              href="https://github.com/ripienaar/free-for-dev"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/about"
               className="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
             >
-              View on GitHub
+              Learn About API
             </a>
           </div>
         </div>

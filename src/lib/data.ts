@@ -64,13 +64,17 @@ async function saveToCache(data: CachedData): Promise<void> {
   }
 }
 
-export async function getToolsData(): Promise<{ tools: Tool[]; categories: Category[] }> {
+export async function getToolsData(): Promise<{ tools: Tool[]; categories: Category[]; lastUpdated?: string }> {
   try {
     // Try to load from cache first
     const cachedData = await loadFromCache();
     if (cachedData) {
       console.log('Using cached data');
-      return { tools: cachedData.tools, categories: cachedData.categories };
+      return { 
+        tools: cachedData.tools, 
+        categories: cachedData.categories,
+        lastUpdated: new Date(cachedData.timestamp).toISOString()
+      };
     }
 
     console.log('Fetching fresh data from GitHub');
@@ -79,14 +83,20 @@ export async function getToolsData(): Promise<{ tools: Tool[]; categories: Categ
     const markdownContent = await fetchFromGitHub();
     const { tools, categories } = parseMarkdownToTools(markdownContent);
     
+    const timestamp = Date.now();
+    
     // Save to cache
     await saveToCache({
       tools,
       categories,
-      timestamp: Date.now()
+      timestamp
     });
     
-    return { tools, categories };
+    return { 
+      tools, 
+      categories,
+      lastUpdated: new Date(timestamp).toISOString()
+    };
   } catch (error) {
     console.error('Error in getToolsData:', error);
     
@@ -104,13 +114,13 @@ export async function getToolsData(): Promise<{ tools: Tool[]; categories: Categ
 }
 
 export async function getToolsMetadata() {
-  const { tools, categories } = await getToolsData();
+  const { tools, categories, lastUpdated } = await getToolsData();
   
   return {
     totalTools: tools.length,
     totalCategories: categories.length,
     freeTools: tools.filter(t => t.pricingModel === 'free').length,
     freemiumTools: tools.filter(t => t.pricingModel === 'freemium').length,
-    lastUpdated: new Date().toISOString()
+    lastUpdated: lastUpdated || new Date().toISOString()
   };
 }

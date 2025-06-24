@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://free-for-dev.vercel.app'),
+  metadataBase: new URL('https://free-on.pages.dev'),
   title: "Free for Developers - Discover Amazing Free Tools & Services",
   description: "Find the best free tools, services, and resources for developers. From APIs to hosting, analytics to databases - everything you need to build your next project without breaking the bank.",
   keywords: "free developer tools, free APIs, free hosting, developer resources, SaaS, PaaS, IaaS, open source tools",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "Free for Developers - Discover Amazing Free Tools & Services",
     description: "Find the best free tools, services, and resources for developers",
     type: "website",
-    url: "https://free-for-dev.vercel.app",
+    url: "https://free-on.pages.dev",
   },
   twitter: {
     card: "summary_large_image",

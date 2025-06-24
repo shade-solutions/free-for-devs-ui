@@ -7,7 +7,7 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 
 export async function generateMetadata(): Promise<Metadata> {
   const metadata = await getToolsMetadata();
-  
+
   return {
     title: `Free for Developers - ${metadata.totalTools}+ Free Tools & Services`,
     description: `Discover ${metadata.totalTools}+ amazing free tools and services for developers across ${metadata.totalCategories}+ categories. From APIs to hosting, analytics to databases - everything you need to build your next project.`,
@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: `Free for Developers - ${metadata.totalTools}+ Free Tools & Services`,
       description: `Discover ${metadata.totalTools}+ amazing free tools and services for developers`,
       type: 'website',
-      url: 'https://free-for-dev.vercel.app',
+      url: 'https://free-on.pages.dev',
       images: [
         {
           url: '/og-image.png',
@@ -45,7 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: ['/og-image.png']
     },
     alternates: {
-      canonical: 'https://free-for-dev.vercel.app'
+      canonical: 'https://free-on.pages.dev'
     },
     robots: {
       index: true,
@@ -62,16 +62,20 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const { tools, categories } = await getToolsData();
+  const { tools, categories, lastUpdated } = await getToolsData();
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Navigation />
-      
+
       <Suspense fallback={<LoadingSpinner />}>
-        <ToolsPage initialTools={tools} initialCategories={categories} />
+        <ToolsPage
+          initialTools={tools}
+          initialCategories={categories}
+          lastUpdated={lastUpdated}
+        />
       </Suspense>
-      
+
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
@@ -81,10 +85,10 @@ export default async function Home() {
             "@type": "WebSite",
             "name": "Free for Developers",
             "description": `Discover ${tools.length}+ amazing free tools and services for developers`,
-            "url": "https://free-for-dev.vercel.app",
+            "url": "https://free-on.pages.dev",
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://free-for-dev.vercel.app/?search={search_term_string}",
+              "target": "https://free-on.pages.dev/?search={search_term_string}",
               "query-input": "required name=search_term_string"
             },
             "mainEntity": {

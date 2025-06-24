@@ -4,17 +4,20 @@ import { useState, useMemo } from 'react';
 import { Tool, Category } from '@/types';
 import { filterTools } from '@/utils/parser';
 import Header from '@/components/Header';
+import RealTimeBanner from '@/components/RealTimeBanner';
 import SearchBar from '@/components/SearchBar';
 import QuickFilters from '@/components/QuickFilters';
 import ToolGrid from '@/components/ToolGrid';
 import Stats from '@/components/Stats';
+import ApiShowcase from '@/components/ApiShowcase';
 
 interface ToolsPageProps {
   initialTools: Tool[];
   initialCategories: Category[];
+  lastUpdated?: string;
 }
 
-export default function ToolsPage({ initialTools, initialCategories }: ToolsPageProps) {
+export default function ToolsPage({ initialTools, initialCategories, lastUpdated }: ToolsPageProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedPricingModels, setSelectedPricingModels] = useState<string[]>([]);
@@ -30,6 +33,8 @@ export default function ToolsPage({ initialTools, initialCategories }: ToolsPage
   return (
     <>
       <Header />
+      
+      <RealTimeBanner totalTools={initialTools.length} lastUpdated={lastUpdated} />
       
       <Stats tools={initialTools} categories={initialCategories} />
       
@@ -51,6 +56,8 @@ export default function ToolsPage({ initialTools, initialCategories }: ToolsPage
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <ToolGrid tools={filteredTools} />
       </main>
+      
+      <ApiShowcase />
       
       {/* Footer */}
       <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-12 mt-16">
