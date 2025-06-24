@@ -33,6 +33,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
+    
+    // Update PWA theme color based on theme
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute('content', newTheme === 'dark' ? '#1f2937' : '#2563eb');
+    }
   };
 
   if (!mounted) {

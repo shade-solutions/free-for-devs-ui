@@ -1,4 +1,5 @@
 import { Tool } from '@/types';
+import Image from 'next/image';
 
 interface ToolCardProps {
   tool: Tool;
@@ -22,14 +23,12 @@ export default function ToolCard({ tool }: ToolCardProps) {
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center space-x-3">
             <div className="relative">
-              <img
-                src={tool.logoUrl}
+              <Image
+                src={tool.logoUrl || '/icons/icon-96x96.png'}
                 alt={`${tool.name} logo`}
+                width={48}
+                height={48}
                 className="w-12 h-12 rounded-xl object-cover bg-gray-100 dark:bg-gray-700 ring-2 ring-gray-100 dark:ring-gray-700 group-hover:ring-blue-200 dark:group-hover:ring-blue-700 transition-all duration-300"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = '/placeholder-logo.svg';
-                }}
               />
               {/* Online indicator */}
               <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -43,9 +42,11 @@ export default function ToolCard({ tool }: ToolCardProps) {
           </div>
           
           {/* Status Badge */}
-          <img
+          <Image
             src={`https://img.shields.io/website?url=https%3A%2F%2F${tool.domain}&up_message=online&down_message=offline&style=flat-square&color=10b981&labelColor=gray`}
             alt="Status"
+            width={100}
+            height={20}
             className="h-5 opacity-80 group-hover:opacity-100 transition-opacity"
           />
         </div>

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /sw.js
+Disallow: /workbox-*
+
+Sitemap: https://free-on.pages.dev/sitemap.xml
+
+# PWA files
+Allow: /manifest.json
+Allow: /icons/
+Allow: /offline.html
