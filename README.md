@@ -1,21 +1,50 @@
-# Free for Developers - Tool Discovery Platform
+# Free for Developers - Real-time Tool Discovery Platform
 
-A beautiful, modern web application that helps developers discover amazing free tools, services, and resources. Built with Next.js, TypeScript, and Tailwind CSS.
+A beautiful, modern web application that fetches the GitHub README of [free-for-dev](https://github.com/ripienaar/free-for-dev) in real time, parses it as a JSON database, and provides both a stunning UI and public API for developers to discover amazing free tools and services.
 
-## Features
+## 🚀 Key Features
 
-- 🔍 **Advanced Search** - Search through tools by name, description, or features
+### Real-time GitHub Integration
+- **Live Data Sync**: Automatically fetches and parses the latest README from the free-for-dev repository
+- **Smart Caching**: 1-hour cache with automatic refresh when repository updates
+- **Fallback System**: Local backup ensures the app works even if GitHub is unavailable
+
+### Advanced Search & Filtering
+- 🔍 **Intelligent Search** - Search through tools by name, description, or features  
 - 🏷️ **Smart Categorization** - Tools organized by categories like APIs, Hosting, Analytics, etc.
 - 💰 **Pricing Filters** - Filter by Free, Freemium, Paid, or Trial offerings
+- ⚡ **Real-time Results** - Instant filtering as you type
+
+### Public API Access
+- **RESTful Endpoints**: Access parsed data programmatically
+- **CORS Enabled**: Use directly from frontend applications
+- **No Authentication**: Free and open access for all developers
+- **Real-time Updates**: API data stays in sync with GitHub repository
+
+### Modern User Experience
 - 📱 **Responsive Design** - Works perfectly on desktop, tablet, and mobile
 - 🎨 **Modern UI** - Clean, minimalistic design with dark mode support
 - ⚡ **Fast Performance** - Built with Next.js 15 and optimized for speed
-- 🔗 **Direct Links** - Quick access to all tools with status monitoring
-- 📊 **Statistics** - Overview of available tools and categories
+- 🔗 **Status Monitoring** - Real-time website status indicators
+- 📊 **Live Statistics** - Overview of available tools and categories
 
-## Data Source
+## 🌐 API Endpoints
 
-This application parses and displays data from the amazing [free-for-dev](https://github.com/ripienaar/free-for-dev) repository, which is a curated list of free services for developers maintained by the community.
+### Get All Tools
+```
+GET /api/tools
+```
+Returns the complete parsed dataset with all tools and categories in JSON format.
+
+### Get Statistics  
+```
+GET /api/stats
+```
+Returns metadata including tool counts and last update timestamp.
+
+## 📊 Data Source
+
+This application provides real-time access to the amazing [free-for-dev](https://github.com/ripienaar/free-for-dev) repository by R.I. Pienaar, which is a curated list of free services for developers maintained by the community.
 
 ## Technology Stack
 
@@ -113,7 +142,19 @@ The application is configured for deployment on Cloudflare Pages using OpenNext:
 pnpm run deploy
 ```
 
-## Contributing
+## 👨‍💻 About the Developer
+
+This project is created and maintained by **Shaswat Raj** ([@sh20raj](https://github.com/sh20raj)).
+
+### Connect with me:
+- 🐱 **GitHub**: [@sh20raj](https://github.com/sh20raj)
+- 💼 **LinkedIn**: [@sh20raj](https://linkedin.com/in/sh20raj) 
+- 🐦 **Twitter**: [@sh20raj](https://twitter.com/sh20raj)
+
+### Repository
+- 📂 **Source Code**: [github.com/shade-solutions/free-for-devs-ui](https://github.com/shade-solutions/free-for-devs-ui)
+
+## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -121,7 +162,19 @@ pnpm run deploy
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## Data Updates
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🙏 Acknowledgments
+
+- **R.I. Pienaar** and all contributors to the [free-for-dev](https://github.com/ripienaar/free-for-dev) repository
+- The amazing developer community for curating these resources
+- All the service providers who offer free tiers for developers
+
+---
+
+**Made with ❤️ by [@sh20raj](https://github.com/sh20raj)**
 
 The application fetches data from the `free-for-dev/README.md` file. To update the data:
 

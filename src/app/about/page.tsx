@@ -23,8 +23,16 @@ export default async function AboutPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">About Free for Developers</h1>
           <p className="text-xl text-blue-100 max-w-3xl">
-            A modern, real-time tool discovery platform that transforms the free-for-dev GitHub repository 
-            into an interactive, searchable database.
+            A modern, real-time tool discovery platform that fetches the GitHub README of{' '}
+            <a 
+              href="https://github.com/ripienaar/free-for-dev" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-blue-200 hover:text-white underline font-medium"
+            >
+              free-for-dev
+            </a>{' '}
+            in real time, parses it as a JSON database, and provides both a beautiful UI and public API.
           </p>
         </div>
       </div>
