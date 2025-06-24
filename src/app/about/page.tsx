@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getToolsMetadata } from '@/lib/data';
+import SimpleHeader from '@/components/SimpleHeader';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -18,6 +19,8 @@ export default async function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <SimpleHeader />
+      
       {/* Header */}
       <div className="bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -438,7 +441,7 @@ export default async function AboutPage() {
         </section>
 
         {/* Back to Tools */}
-        <div className="text-center">
+        <div className="text-center pb-20">
           <Link
             href="/"
             className="inline-flex items-center space-x-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
@@ -448,6 +451,23 @@ export default async function AboutPage() {
             </svg>
             <span>Back to Tools</span>
           </Link>
+        </div>
+
+        {/* Create a BottomBar for the About page too */}
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-700 shadow-lg">
+          <div className="px-4 py-3">
+            <div className="max-w-7xl mx-auto flex items-center justify-center">
+              <Link
+                href="/"
+                className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors border border-blue-200 dark:border-blue-700"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span className="font-medium">Back to Tools</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
