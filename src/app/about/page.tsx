@@ -257,6 +257,97 @@ export default async function AboutPage() {
           </div>
         </section>
 
+        {/* Technical Implementation */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Technical Implementation</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Data Processing</h3>
+                <ul className="space-y-3 text-gray-600 dark:text-gray-400">
+                  <li className="flex items-start space-x-3">
+                    <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Real-time GitHub API integration with smart caching</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Custom markdown parser using JavaScript regular expressions</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Intelligent categorization and pricing model detection</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Automated favicon fetching via Google API</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Technology Stack</h3>
+                <ul className="space-y-3 text-gray-600 dark:text-gray-400">
+                  <li className="flex items-start space-x-3">
+                    <svg className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Next.js 15 with App Router and TypeScript</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <svg className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Tailwind CSS for responsive design</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <svg className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>RESTful API with CORS support</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <svg className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Cloudflare Pages deployment</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Live Enhancements</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600 dark:text-gray-400">
+                <div className="flex items-center space-x-2">
+                  <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                  <span>Real-time status badges via Shield.io</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                  <span>Website favicons from Google Favicon API</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                  <span>Intelligent search with real-time filtering</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+                  <span>SEO optimization with dynamic metadata</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Developer */}
         <section className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">About the Developer</h2>
