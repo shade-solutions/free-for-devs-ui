@@ -6,7 +6,7 @@ interface SearchBarProps {
 
 export default function SearchBar({ searchTerm, onSearchChange, totalResults }: SearchBarProps) {
   return (
-    <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-6">
+    <div id="search-bar" className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-6">
       <div className="max-w-4xl mx-auto">
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -18,7 +18,7 @@ export default function SearchBar({ searchTerm, onSearchChange, totalResults }: 
             type="text"
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-xl leading-5 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
+            className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-xl leading-5 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg shadow-lg"
             placeholder="Search for tools, features, or technologies..."
           />
         </div>
